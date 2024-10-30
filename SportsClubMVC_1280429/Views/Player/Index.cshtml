@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SportsClubMVC_1280429.Models.Player>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Player Information</h2>
+<div class="d-flex justify-content-end mb-2">
+    <a href="@Url.Action("Create","Player")" id="btnCreate" class="btn btn-outline-primary">Create New Player</a>&nbsp;
+    <a href="@Url.Action("PlayerList","Player")" id="btnCreate" class="btn btn-outline-secondary">Player List</a>
+</div>
+<div>
+    @foreach (var pla in Model)
+    {
+        <div class="card mb-2">
+            <div class="card-header d-flex justify-content-between">
+                <div>
+                    <img src="@pla.Picture" width="100" height="100" class="rounded" /><br />
+                    <label class="mr-2"><b>Player Name: @Html.DisplayFor(x => pla.PlayerName)</b></label><br />
+                    <label class="mr-2"><b>Date Of Birth: @Html.DisplayFor(x => pla.DateOfBirth)</b></label><br />
+                    <label class="mr-2"><b>Age: @Html.DisplayFor(x => pla.Age)</b></label><br />
+                    <label class="mr-2"><b>Salary: @Html.DisplayFor(x => pla.Salary)</b></label><br />
+                    <label class="mr-2"><b>Is Active? @Html.DisplayFor(x => pla.Status)</b></label><br />
+                </div>
+                <div>
+                    <a href="@Url.Action("Edit","Player", new {id=pla.PlayerId})" class="btn btn-outline-primary">Edit</a>
+                    <a href="@Url.Action("Delete","Player", new {id=pla.PlayerId})" class="btn btn-outline-danger">Delete</a>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <table class="table table-bordered table-striped table-sm">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>Sports Id</th>
+                            <th>Sports Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in pla.SportsEntries)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(x => item.Sport.SportsId)</td>
+                                <td>@Html.DisplayFor(x => item.Sport.SportsTitle)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>
+

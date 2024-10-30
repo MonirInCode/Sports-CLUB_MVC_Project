@@ -1,0 +1,10 @@
+﻿@model SportsClubMVC_1280429.Models.Sport
+<div class="row mb-2">
+    <div class="col-10">
+        @Html.DropDownListFor(x => x.SportsId, ViewBag.sports as SelectList, "----Select----", htmlAttributes: new { @class = "form-select form-select-sm" })
+    </div>
+    <div class="col-2">
+        <a href="#" id="btnDeleteSports" class="btn btn-danger">Delete</a>
+    </div>
+</div>
+

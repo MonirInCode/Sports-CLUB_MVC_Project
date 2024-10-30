@@ -1,0 +1,27 @@
+﻿@model SportsClubMVC_1280429.Models.Sport
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sport</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SportsTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SportsTitle)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SportsId }, htmlAttributes: new {@class="btn btn-success"})
+    @Html.ActionLink("Back", "Index", new { @class = "btn btn-primary" })
+</p>
